@@ -1,0 +1,55 @@
+# Training hyper parameters
+training:
+  epochs : 500
+  lr0    : 0.0001 # initial learning rate
+  nbs    : 4
+
+# Sampling
+sampling_interval: 100
+
+# Data Preprocessing
+data:
+  image_res      : [1088, 1920]
+  homography_res : [880, 1600]
+  channel        : 'r' # choose ['r','g','b']
+  flipud         : 0.5 # image flip up-down (probability)
+  fliplr         : 0.5 # image flip left-right (probability)
+
+# Physical constant
+wavelength:
+  b: 450 # nm
+  g: 520 # nm
+  r: 638 # nm
+
+# Propagation
+propagation_config:
+  backward:
+    wavelength     : 638 # nm
+    isBandLimit    : True
+    isQE           : True
+    prop_dist      : -20 # cm
+    feature_size   : [6.4, 6.4] # um
+    field_res      : [1088, 1920]
+
+  forward:
+    wavelength     : 638 # nm
+    isBandLimit    : True
+    isQE           : True
+    prop_dist      : 20 # cm
+    feature_size   : [6.4, 6.4] # um
+    field_res      : [1088, 1920]
+
+# Target
+target:
+  target_res     : [1088, 1920]
+  roi_res        : [880, 1600]
+  recon_scale    : 0.95
+
+# Model selection
+model:
+  name: 'dprc'
+  activation_init:
+    name: 'tanh'
+  activation_last:
+    name: 'tanh'
+  pretrained_weight: False

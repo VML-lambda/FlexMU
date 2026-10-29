@@ -1,0 +1,7 @@
+*pycache*
+EXP_generation
+slurm_logs
+data/
+train_ddp.sh
+drafts
+*.sh
